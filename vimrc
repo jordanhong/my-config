@@ -16,29 +16,25 @@ Plug 'preservim/nerdtree'
 
 " vim-latex plugin
 Plug 'vim-latex/vim-latex'
+let g:Tex_CompileRule_pdf = 'pdflatex -synctex=1 --interaction=batchmode $*'
+let g:Tex_DefaultTargetFormat = 'pdf'
+let g:Tex_ViewRule_pdf = 'open -a Skim'
 
-
-"Trying Snippets
-"
-" Track the engine.
+"UltiSnip Engine
 Plug 'SirVer/ultisnips'
 
-
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" Trigger configuration. 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-" If you want :UltiSnipsEdit to split your window.
+" configure :UltiSnipsEdit to split window.
 let g:UltiSnipsEditSplit="vertical"
 
-
+Plug 'JamshedVesuna/vim-markdown-preview'
+let vim_markdown_preview_github=1
 
 call plug#end()
-
-let g:Tex_CompileRule_pdf = 'pdflatex -synctex=1 --interaction=batchmode $*'
-let g:Tex_DefaultTargetFormat = 'pdf'
-let g:Tex_ViewRule_pdf = 'open -a Skim'
 
 " -------------------------------------------------------------
 "  Non Plug stuff
