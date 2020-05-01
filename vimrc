@@ -17,17 +17,12 @@ Plug 'preservim/nerdtree'
 " vim-latex plugin
 Plug 'vim-latex/vim-latex'
 
-" CoC Use release branch
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 
 "Trying Snippets
 "
 " Track the engine.
 Plug 'SirVer/ultisnips'
 
-" Snippets are separated from the engine. Add this if you want them:
-Plug 'honza/vim-snippets'
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
