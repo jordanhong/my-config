@@ -1,3 +1,5 @@
+" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
+filetype plugin on
 
 set nocompatible              " be iMproved, required
 
@@ -13,12 +15,19 @@ call plug#begin('~/.vim/plugged')
 
 " Nerd tree Plug in for filemanager
 Plug 'preservim/nerdtree'
+" Remap 
+nmap <c-f> :NERDTreeToggle<CR>
+
 
 " vim-latex plugin
 Plug 'vim-latex/vim-latex'
 let g:Tex_CompileRule_pdf = 'pdflatex -synctex=1 --interaction=batchmode $*'
 let g:Tex_DefaultTargetFormat = 'pdf'
 let g:Tex_ViewRule_pdf = 'open -a Skim'
+" Required for vim to recognized latex files
+let g:tex_flavor = 'latex' 
+let g:Tex_Menus = 1
+
 
 "UltiSnip Engine
 Plug 'SirVer/ultisnips'
