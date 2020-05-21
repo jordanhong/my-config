@@ -36,7 +36,7 @@ I use the plug-in manager vim-plug.
 
     **Important**: 
         For OS, I use the Skim Pdf reader: ``let g:Tex_ViewRule_pdf = 'open -a Skim'``
-        For Linux, I use Zathura: ``let g:Tex_ViewRule_pdf = 'open -a zathura'``
+        For Linux, I use Zathura: ``let g:Tex_ViewRule_pdf = 'zathura'``
 
 
 
