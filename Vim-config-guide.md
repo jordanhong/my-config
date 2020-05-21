@@ -45,7 +45,7 @@ I use the plug-in manager vim-plug.
     Quick start: to configure specific snippets, launch ``:UltiSnipsEdit`` when the relavent file (e.g. `.py`, `.tex`) is opened.
 
 3. Vim-markdown preview(Plug 'JamshedVesuna/vim-markdown-preview')
-    Prerequisites:nstall  
+    Prerequisites: install grip (Github flavoured Markdown) 
     Quick Start: <C-p> to launch markdown preview.
  
  
