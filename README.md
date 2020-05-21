@@ -14,8 +14,8 @@ Therefore, if something is Vim-built-in and relatively easy to pick up, I will u
 
 ## Installation Guide: From a clean new environment to configured.
 
-1. For Mac OSX users: refer to [OS X Installation Guide](OS-X-installation-guide.md)
-2. For Linux users: refer to [Linux Installation Guide] (Linux-installation-guide.md)
+1. For Mac OSX users: refer to [OS X Installation Guide](OSX-installation-guide.md)
+2. For Linux users: refer to [Linux Installation Guide](Linux-installation-guide.md)
 3. For Vim configurations: [Vim-config-guide](Vim-config-guide.md)
 
 
