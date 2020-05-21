@@ -133,3 +133,4 @@ fi
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 alias weather="curl wttr.in/Toronto"
 alias open="xdg-open"
+source xilinx/Vivado/2019.2/settings64.sh
