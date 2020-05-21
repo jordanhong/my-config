@@ -1,16 +1,15 @@
 # My-config
 
-This is the repository where I store a copy of my own configurations, mostly Vim and Unix based.
+This is the repository where I store a copy of my own configurations of Terminal command line and Vim profile. 
 
 ## My Philosopy
-My standards for a developer environment is:
+My standards for a development environment is:
 
 1. Clean.
 2. Light-weight, easy to install and re-install.
 3. Configurable to my own liking.
 
-Therefore, if something is Vim-built-in and relatively easy to pick up, I will use the vim version instead of external plug-ins. I try to keep my set-up as clean as possible. 
-
+Therefore, I use VIM, which is a powerful, extensible general text-editor. I adopt minimalism in my setup config files. I install only the necessary plugins for my usage. If a function is built-in and simple, I prefer learning the command rather than relying on plugins.  
 
 ## Installation Guide: From a clean new environment to configured.
 
