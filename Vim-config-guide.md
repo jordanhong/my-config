@@ -59,3 +59,4 @@ I use the plug-in manager vim-plug.
 5. Display line number: `:set number`; `:set nonumber` to turn off.
 6. Copy to system clip board: `"*y` 
 7. Toggle case of character under cursor pr all visually-selected characters: `~` 
+8. `ctrl-O` to jump back to the previous (older) location. `ctrl-I` (same as Tab) to jump forward to the next (newer) location.
