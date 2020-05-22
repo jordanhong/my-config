@@ -20,6 +20,10 @@ The [.bashrc](.bashrc) file contains default configurations. I made a few change
     2. Changed colour to brown: ``[\033[0;33m\]\u@\h\``
 2. Set alias ``open`` in lieu of ``xdg-open``. 
 
+### Aesthetics
+I use *black-on-white scheme* and chose the *DeJaVu Sans Monobook* font.These can be configured in Preferences. 
+
+
 
 ## Configure Vim
 
