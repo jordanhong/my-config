@@ -57,5 +57,5 @@ I use the plug-in manager vim-plug.
 3. Leave current session: `ctrl-z`; re-open at terminal: `fg`
 4. Re-use last visual select: `gv`
 5. Display line number: `:set number`; `:set nonumber` to turn off.
-6. Copy to system clip board: `"+y` 
+6. Copy to system clip board: `"*y` 
 7. Toggle case of character under cursor pr all visually-selected characters: `~` 
