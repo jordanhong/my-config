@@ -50,13 +50,31 @@ I use the plug-in manager vim-plug.
     Quick Start: <C-p> to launch markdown preview.
  
  
-### Useful Vim commands:
+### Vim Quick Notes:
+
+#### Vim Patterns
+
+1. The `Set` pattern: using `:set` to control specfic functions:<br/>
+    **Formula**: <br/>
+    1. `set foo`: "enable the option (foo)
+    2. `set nofoo`: "disable it
+    3. `set foo!`: "toggle the option
+    4. `set foo?`:"get option's current value 
+    
+    **Examples**
+    1. Display line number: `:set number`; `:set nonumber` to turn off.
+    
+    
+### Vim Commands
 
 1. Enable spell check: `:setlocal spell spelllang=en_us`; to disable: `:set nospell`
 2. Find a file: `:find myfile.extension`
 3. Leave current session: `ctrl-z`; re-open at terminal: `fg`
 4. Re-use last visual select: `gv`
-5. Display line number: `:set number`; `:set nonumber` to turn off.
 6. Copy to system clip board: `"*y` 
 7. Toggle case of character under cursor pr all visually-selected characters: `~` 
 8. `ctrl-O` to jump back to the previous (older) location. `ctrl-I` (same as Tab) to jump forward to the next (newer) location.
+
+
+
+
