@@ -23,7 +23,10 @@ nmap <c-f> :NERDTreeToggle<CR>
 Plug 'vim-latex/vim-latex'
 let g:Tex_CompileRule_pdf = 'pdflatex -synctex=1 --interaction=batchmode $*'
 let g:Tex_DefaultTargetFormat = 'pdf'
-let g:Tex_ViewRule_pdf = 'open -a Skim'
+"-----configure pdf application---------------------------
+"Mac uses Skim, Ubuntu uses Zathura
+" let g:Tex_ViewRule_pdf = 'open -a Skim'
+let g:Tex_ViewRule_pdf = 'open -a zathura'
 " Required for vim to recognized latex files
 let g:tex_flavor = 'latex' 
 let g:Tex_Menus = 1
