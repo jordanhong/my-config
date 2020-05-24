@@ -26,7 +26,7 @@ let g:Tex_DefaultTargetFormat = 'pdf'
 "-----configure pdf application---------------------------
 "Mac uses Skim, Ubuntu uses Zathura
 " let g:Tex_ViewRule_pdf = 'open -a Skim'
-let g:Tex_ViewRule_pdf = 'open -a zathura'
+let g:Tex_ViewRule_pdf = 'zathura'
 " Required for vim to recognized latex files
 let g:tex_flavor = 'latex' 
 let g:Tex_Menus = 1
@@ -61,4 +61,9 @@ call plug#end()
 :set expandtab
 
 
+" Enable folding by indent
+:set foldmethod=indent
 
+
+"Toggle number
+nmap <c-l> :set invnumber<CR>
