@@ -38,17 +38,21 @@ I use the plug-in manager vim-plug.
         For OS, I use the Skim Pdf reader: ``let g:Tex_ViewRule_pdf = 'open -a Skim'``
         For Linux, I use Zathura: ``let g:Tex_ViewRule_pdf = 'zathura'``
 
-
-
-
-
 2. Ultisnip- Snippet Managers (``'SirVer/ultisnips'``)\
     Quick start: to configure specific snippets, launch ``:UltiSnipsEdit`` when the relavent file (e.g. `.py`, `.tex`) is opened.
 
 3. Vim-markdown preview(Plug 'JamshedVesuna/vim-markdown-preview')\
     Prerequisites: install grip (Github flavoured Markdown)<br/> 
     Quick Start: <C-p> to launch markdown preview.
- 
+
+4. Gruvbox theme (Plug 'morhetz/gruvbox'): Use gruvbox theme in vi.
+  
+### External Software
+
+1. Ctags: Downloaded Exuberant ctags (see `:h ctags` for more information) <br/>
+    Quick start: In terminal, run 'ctags -R .' to generate tags. 
+    This generates a link across files on definitions. One can use `CTRL-]` to jump to the declaration of a function in the source file.
+
  
 ### Vim Quick Notes:
 
@@ -74,7 +78,7 @@ I use the plug-in manager vim-plug.
 6. Copy to system clip board: `"*y` 
 7. Toggle case of character under cursor pr all visually-selected characters: `~` 
 8. `ctrl-O` to jump back to the previous (older) location. `ctrl-I` (same as Tab) to jump forward to the next (newer) location.
-
+9. Go to definition in same file: `gd`
 
 
 
