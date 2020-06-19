@@ -46,6 +46,14 @@ let g:UltiSnipsEditSplit="vertical"
 Plug 'JamshedVesuna/vim-markdown-preview'
 let vim_markdown_preview_github=1
 
+"Style
+Plug 'morhetz/gruvbox'
+let g:gruvbox_italic=1
+autocmd vimenter * colorscheme gruvbox
+set background=dark    " Setting dark mode
+set termguicolors
+
+
 call plug#end()
 
 " -------------------------------------------------------------
