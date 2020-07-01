@@ -27,13 +27,8 @@ Plug 'vim-latex/vim-latex'
 Plug 'SirVer/ultisnips'
 """ Markdown Preview
 Plug 'JamshedVesuna/vim-markdown-preview'
-""" Verilog Plugin
-"Plug 'vhda/verilog_systemverilog.vim'
-""" Gruvbox
-"Plug 'morhetz/gruvbox'
-Plug 'gruvbox-community/gruvbox'
 
-""" Gruvbox Material
+""" Gruvbox
 Plug 'jordanhong/gruvbox-material'
 """ Wenyan Support
 Plug 'voldikss/vim-wenyan'
@@ -43,9 +38,11 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 """ Vim Airline
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 
 call plug#end()
+
 
 "" Plug-in Settings
 
@@ -55,9 +52,11 @@ nmap <c-f> :NERDTreeToggle<CR>
 """ Vim-latex
 let g:Tex_CompileRule_pdf = 'pdflatex -synctex=1 --interaction=batchmode $*'
 let g:Tex_DefaultTargetFormat = 'pdf'
-" Mac uses Skim, Ubuntu uses Zathura
-" let g:Tex_ViewRule_pdf = 'open -a Skim' "for Mac
-let g:Tex_ViewRule_pdf = 'zathura'
+if has('mac')
+    let g:Tex_ViewRule_pdf = 'open -a Skim' 
+else
+    let g:Tex_ViewRule_pdf = 'zathura' 
+endif
 let g:tex_flavor = 'latex' 
 let g:Tex_Menus = 1
 let g:Tex_SmartKeyQuote=0
@@ -72,25 +71,49 @@ let g:UltiSnipsEditSplit="vertical" "Split ultisnipedit veritcally
 """ Markdown Preview
 let g:vim_markdown_preview_github=1
 
-""" Gruvbox
-"let g:gruvbox_italic=1
-"autocmd vimenter * colorscheme gruvbox "autoload gruvbox scheme
-"set background=dark " Setting dark mode
-"let g:gruvbox_guisp_fallback='fg' "highlight search (bg) or use different font
-"
-""" Gruvbox Material
-if has('termguicolors')
-  set termguicolors
+""" Gruvbox material
+colorscheme gruvbox-material
+let g:gruvbox_material_enable_bold = 1
+if has('mac')
+    set background=light
+    let g:gruvbox_material_disable_italic_comment = 1
+else
+    set background=dark
 endif
 
-" For dark version.
-set background=dark
-colorscheme gruvbox-material
+""" Vim Airline
+:let g:airline_theme='gruvbox_material'
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
 
-let g:gruvbox_material_enable_bold = 1
-" Use the color palette of the original gruvbox.
-"let g:gruvbox_material_palette = 'mix'
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.maxlinenr = '㏑'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = 'Ɇ'
+let g:airline_symbols.whitespace = 'Ξ'
 
+
+
+"" TO BE TESTED 
+""" Verilog
+"Plug 'vhda/verilog_systemverilog.vim'
+""" Prettier
+""" Fugitive
 """"""""""""""
 "  General Settings  "
 """""""""""""" 
