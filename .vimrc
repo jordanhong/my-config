@@ -40,8 +40,11 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+""" Fugitive
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
+
 
 
 "" Plug-in Settings
@@ -113,7 +116,10 @@ let g:airline_symbols.whitespace = 'Ξ'
 """ Verilog
 "Plug 'vhda/verilog_systemverilog.vim'
 """ Prettier
+
 """ Fugitive
+
+
 """"""""""""""
 "  General Settings  "
 """""""""""""" 
