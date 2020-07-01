@@ -40,11 +40,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-""" Fugitive
-Plug 'tpope/vim-fugitive'
 
 call plug#end()
-
 
 
 "" Plug-in Settings
@@ -76,14 +73,12 @@ let g:vim_markdown_preview_github=1
 
 """ Gruvbox material
 colorscheme gruvbox-material
+let g:gruvbox_termcolors=16
 let g:gruvbox_material_enable_bold = 1
 if has('mac')
-    set background=light
     let g:gruvbox_material_disable_italic_comment = 1
-else
-    set background=dark
 endif
-
+set background=dark
 """ Vim Airline
 :let g:airline_theme='gruvbox_material'
 if !exists('g:airline_symbols')
@@ -112,14 +107,12 @@ let g:airline_symbols.whitespace = 'Ξ'
 
 
 
+""" Fugitive
+Plug 'tpope/vim-fugitive'
 "" TO BE TESTED 
 """ Verilog
 "Plug 'vhda/verilog_systemverilog.vim'
 """ Prettier
-
-""" Fugitive
-
-
 """"""""""""""
 "  General Settings  "
 """""""""""""" 
