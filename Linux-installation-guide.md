@@ -22,7 +22,7 @@ The [.bashrc](.bashrc) file contains default configurations. I made a few change
 
 ### Aesthetics
 1. To improve readability and aesthetics, I opted for the [Gruvbox Dark Theme for GNOME Terminals](https://github.com/metalelf0/gnome-terminal-colors).<br/> 
-    **Important**: the original source code specified [black bold font](https://github.com/metalelf0/gnome-terminal-colors/blob/master/colors/gruvbox-dark/bd_color) for gruvbox darkmode. <br/> 
+    *Important*: the original source code specified [black bold font](https://github.com/metalelf0/gnome-terminal-colors/blob/master/colors/gruvbox-dark/bd_color) for gruvbox darkmode. <br/> 
 Change the `#000000000000` to the foreground colour `#ebebdbdbb2b2` before installing so that bolded words are still readable. 
 2. (Built-in theme) I previously used *black-on-white scheme* and chose the *DeJaVu Sans Monobook* font. These can be configured in Preferences. 
 
