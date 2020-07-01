@@ -39,6 +39,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 """ Vim Airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+""" Fugitive
+Plug 'tpope/vim-fugitive'
 
 
 call plug#end()
@@ -107,8 +109,6 @@ let g:airline_symbols.whitespace = 'Ξ'
 
 
 
-""" Fugitive
-Plug 'tpope/vim-fugitive'
 "" TO BE TESTED 
 """ Verilog
 "Plug 'vhda/verilog_systemverilog.vim'
