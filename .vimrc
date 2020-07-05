@@ -75,12 +75,14 @@ let g:vim_markdown_preview_github=1
 
 """ Gruvbox material
 colorscheme gruvbox-material
-let g:gruvbox_termcolors=16
+set termguicolors
 let g:gruvbox_material_enable_bold = 1
 if has('mac')
+    set background=light
     let g:gruvbox_material_disable_italic_comment = 1
+else
+    set background=dark
 endif
-set background=dark
 """ Vim Airline
 :let g:airline_theme='gruvbox_material'
 if !exists('g:airline_symbols')
