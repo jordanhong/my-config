@@ -72,7 +72,7 @@ let g:UltiSnipsEditSplit="vertical" "Split ultisnipedit veritcally
 
 """ Markdown Preview
 let g:vim_markdown_preview_github=1
-
+let vim_markdown_preview_hotkey='<C-m>'
 """ Gruvbox material
 colorscheme gruvbox-material
 set termguicolors
