@@ -109,8 +109,8 @@ let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.notexists = 'Ɇ'
 let g:airline_symbols.whitespace = 'Ξ'
 
-
-
+""" Ctrl-P
+let g:ctrlp_arg_map = 1
 "" TO BE TESTED 
 """ Verilog
 "Plug 'vhda/verilog_systemverilog.vim'
