@@ -1,6 +1,6 @@
 " My Vim Configuration 
 """"""""""""""
-"  Vim "
+"  Global Vim "
 """"""""""""""
 
 set nocompatible              " be iMproved, required
@@ -67,6 +67,8 @@ let g:Tex_SmartKeyQuote=0
 " Trigger configuration. 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" Need to remap jump forward from <c-j> to <c-b>, since the former interferes
+" with latex-suite
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical" "Split ultisnipedit veritcally
 
@@ -75,7 +77,9 @@ let g:vim_markdown_preview_github=1
 let vim_markdown_preview_hotkey='<C-m>'
 """ Gruvbox material
 colorscheme gruvbox-material
-set termguicolors
+if exists('+termguicolors')
+    set termguicolors
+endif
 let g:gruvbox_material_enable_bold = 1
 if has('mac')
     set background=light
@@ -139,27 +143,39 @@ let g:ctrlp_arg_map = 1
 
 """ Writing
 " Enable latex and markdown files
-autocmd FileType tex,markdown set spell 
+autocmd FileType tex,markdown,text set spell 
 " Set word wrapping (not working yet): prevent words from splitting off a line
 :set wrap
 
+"" Sessions
+""" Update Session
+:nmap <F2> :wa<Bar>exe "mksession! " . v:this_session<CR>
 "" File navigation
 """ Folding 
 " Enable fold by syntax for C
-autocmd FileType c set foldmethod=syntax
-" Enable fold by indent
-":set foldmethod=indent
-
+autocmd FileType c,cpp  set foldmethod=syntax
+"" Save folding state
+:nmap <F3> :mkview<CR>
+:nmap <F4> :loadview<CR>
+:nmap <F5> zfa(
+"" File navigation
 """ Searching
 " Set highlight search
 :set hls
+" Set increment highlight matches
+:set incsearch
 " Clears highlight of search when Enter.
 " remap enter after search to clear highlight, then clears command.
 nnoremap <silent> <cr> :noh<CR> 
 
+""" Wild menu
+" Set wildmenu (shows completion list bar)
+set wildmenu
 """ Line number
 "Toggle number at ctrl-l
-nmap <c-l> :set invnumber<CR>
+"Hybrid: shows current abs number and relative
+"see: :h number_relativenumber 
+nmap <c-l> :set number! relativenumber!<CR>
 """ Tags
 map <C-\> :bel vert winc ]<CR>
 
@@ -177,6 +193,15 @@ map <C-\> :bel vert winc ]<CR>
 "So, you can use <c-w>}if you want to quickly check the tag declaration, followed by <c-w>z to close it. But if you want to navigate, then you can simply use <c-w>v to create a split followed by the standard <c-] to navigate in the tags. When you're done with it, you can simply close the window with <c-w>c.
 
 
+
+"" Backup
+" Turn on backup to store in file.ext.bak
+set backup
+set backupext=.bak
+
+"" Ctags shortcuts
+command! Maketag !ctags -R .
+set shortmess=a
 
 """"""""""""""""""""""""
 "  Vimrc Organization  "
