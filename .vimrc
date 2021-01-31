@@ -115,10 +115,6 @@ let g:airline_symbols.whitespace = 'Ξ'
 
 """ Ctrl-P
 let g:ctrlp_arg_map = 1
-"" TO BE TESTED 
-""" Verilog
-"Plug 'vhda/verilog_systemverilog.vim'
-""" Prettier
 """"""""""""""
 "  General Settings  "
 """""""""""""" 
@@ -175,6 +171,8 @@ set wildmenu
 "Toggle number at ctrl-l
 "Hybrid: shows current abs number and relative
 "see: :h number_relativenumber 
+"Show numebrs by default
+set number! relativenumber!
 nmap <c-l> :set number! relativenumber!<CR>
 """ Tags
 map <C-\> :bel vert winc ]<CR>
