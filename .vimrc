@@ -42,8 +42,11 @@ Plug 'vim-airline/vim-airline-themes'
 """ Fugitive
 Plug 'tpope/vim-fugitive'
 
+""" Vim hard time (prevents using repeated hjkl)
+Plug 'takac/vim-hardtime'
 
 call plug#end()
+
 
 
 "" Plug-in Settings
@@ -115,6 +118,9 @@ let g:airline_symbols.whitespace = 'Ξ'
 
 """ Ctrl-P
 let g:ctrlp_arg_map = 1
+""" Vim hardtime
+let g:hardtime_default_on = 1
+"Plug 'vhda/verilog_systemverilog.vim'
 """"""""""""""
 "  General Settings  "
 """""""""""""" 
@@ -174,6 +180,7 @@ set wildmenu
 "Show numebrs by default
 set number! relativenumber!
 nmap <c-l> :set number! relativenumber!<CR>
+set number relativenumber
 """ Tags
 map <C-\> :bel vert winc ]<CR>
 
