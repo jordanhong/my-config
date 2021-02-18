@@ -25,16 +25,10 @@ Plug 'preservim/nerdtree'
 Plug 'vim-latex/vim-latex'
 """ UltiSnip Engine
 Plug 'SirVer/ultisnips'
-""" Markdown Preview
-Plug 'JamshedVesuna/vim-markdown-preview'
-
 """ Gruvbox
 Plug 'jordanhong/gruvbox-material'
-""" Wenyan Support
-Plug 'voldikss/vim-wenyan'
-
-""" Ctrl-p (fuzzy search)
-Plug 'ctrlpvim/ctrlp.vim'
+""" Ctrl-p (fuzzy search, uninstalled by default)
+" Plug 'ctrlpvim/ctrlp.vim'
 
 """ Vim Airline
 Plug 'vim-airline/vim-airline'
@@ -75,9 +69,6 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical" "Split ultisnipedit veritcally
 
-""" Markdown Preview
-let g:vim_markdown_preview_github=1
-let vim_markdown_preview_hotkey='<C-m>'
 """ Gruvbox material
 colorscheme gruvbox-material
 if exists('+termguicolors')
@@ -120,6 +111,10 @@ let g:airline_symbols.whitespace = 'Ξ'
 let g:ctrlp_arg_map = 1
 """ Vim hardtime
 let g:hardtime_default_on = 1
+let g:hardtime_showmsg = 1
+let g:hardtime_allow_different_key = 1
+let g:hardtime_ignore_quickfix = 1
+let g:hardtime_ignore_buffer_patterns = [ "CustomPatt[ae]rn", "NERD.*" ]
 "Plug 'vhda/verilog_systemverilog.vim'
 """"""""""""""
 "  General Settings  "
