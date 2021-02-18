@@ -208,6 +208,9 @@ set backupext=.bak
 command! Maketag !ctags -R .
 set shortmess=a
 
+"" Autocomplete
+" by default, dashes ('-') aren't included in C-n C-p autocomplete
+set iskeyword+=\-   "sets to recognize dashes
 """"""""""""""""""""""""
 "  Vimrc Organization  "
 """"""""""""""""""""""""
