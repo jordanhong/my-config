@@ -210,6 +210,12 @@ set shortmess=a
 "" Autocomplete
 " by default, dashes ('-') aren't included in C-n C-p autocomplete
 set iskeyword+=\-   "sets to recognize dashes
+"" Manpage
+runtime ftplugin/man.vim
+"" K at cursor opens manpage
+set keywordprg=:Man     
+"" Vertical split mode
+let g:ft_man_open_mode = 'vert' 
 """"""""""""""""""""""""
 "  Vimrc Organization  "
 """"""""""""""""""""""""
