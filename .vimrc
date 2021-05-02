@@ -36,6 +36,8 @@ Plug 'vim-airline/vim-airline-themes'
 """ Fugitive
 Plug 'tpope/vim-fugitive'
 
+""" Commentary
+Plug 'tpope/vim-commentary'
 """ Vim hard time (prevents using repeated hjkl)
 Plug 'takac/vim-hardtime'
 
@@ -122,27 +124,27 @@ let g:hardtime_ignore_buffer_patterns = [ "CustomPatt[ae]rn", "NERD.*" ]
 "" Status Bar
 """ Show command
 "Show what command is being typed
-:set showcmd
+set showcmd
 
 "" Syntax
 """ Indentation
 "Set smart indent
-:set smartindent
-:set autoindent
+set smartindent
+set autoindent
 
 """ Syntax Highlight
 :syntax on
 
 """ Configure tab spaces
-:set tabstop=4
-:set shiftwidth=4
-:set expandtab
+set tabstop=4
+set shiftwidth=4
+set expandtab
 
 """ Writing
 " Enable latex and markdown files
 autocmd FileType tex,markdown,text set spell 
 " Set word wrapping (not working yet): prevent words from splitting off a line
-:set wrap
+set wrap
 
 "" Sessions
 """ Update Session
@@ -151,6 +153,7 @@ autocmd FileType tex,markdown,text set spell
 """ Folding 
 " Enable fold by syntax for C
 autocmd FileType c,cpp  set foldmethod=syntax
+autocmd FileType python set foldmethod=indent
 "" Save folding state
 :nmap <F3> :mkview<CR>
 :nmap <F4> :loadview<CR>
@@ -158,9 +161,9 @@ autocmd FileType c,cpp  set foldmethod=syntax
 "" File navigation
 """ Searching
 " Set highlight search
-:set hls
+set hls
 " Set increment highlight matches
-:set incsearch
+set incsearch
 " Clears highlight of search when Enter.
 " remap enter after search to clear highlight, then clears command.
 nnoremap <silent> <cr> :noh<CR> 
@@ -200,12 +203,15 @@ set backup
 set backupext=.bak
 
 "" Ctags shortcuts
-command! Maketag !ctags -R .
+command! Maketag !ctags -R --exclude='*.bak' .
 set shortmess=a
 
 "" Autocomplete
 " by default, dashes ('-') aren't included in C-n C-p autocomplete
 set iskeyword+=\-   "sets to recognize dashes
+"" Omnicompletion
+" Closes preview window at selection
+autocmd CompleteDone * pclose
 "" Manpage
 runtime ftplugin/man.vim
 "" K at cursor opens manpage
