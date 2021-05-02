@@ -111,6 +111,8 @@ let g:airline_symbols.whitespace = 'Ξ'
 
 """ Ctrl-P
 let g:ctrlp_arg_map = 1
+""" Fugutive
+set diffopt=vertical
 """ Vim hardtime
 let g:hardtime_default_on = 1
 let g:hardtime_showmsg = 1
@@ -126,6 +128,8 @@ let g:hardtime_ignore_buffer_patterns = [ "CustomPatt[ae]rn", "NERD.*" ]
 "Show what command is being typed
 set showcmd
 
+"" Mute bell
+set belloff=all
 "" Syntax
 """ Indentation
 "Set smart indent
