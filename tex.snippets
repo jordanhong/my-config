@@ -16,23 +16,47 @@ else:
 `$2
 endsnippet
 
+snippet \8 "theta" i
+\theta
+endsnippet
+
+snippet \u "mu" i
+\mu
+endsnippet
+
+snippet \88 "Big theta" i
+\Theta
+endsnippet
+
+snippet h8x "hypothesis" w
+h_\theta(x)
+endsnippet
 
 snippet dm "Math" wA
 \[
 $1
-.\] $0
+\] $0
 endsnippet
 
+global !p
+def fix_indent(snip):
+    vim.eval('feedkeys("\<c-f>")')
+endglobal
 
-snippet lm "Math with label" wA
+post_expand "fix_indent(snip)"
+snippet \i "Individual item" bA
+\item $0
+endsnippet
+
+snippet equation  "Math with label" w
 \begin{equation}
 	$1
-	\label{$2}
+	\label{eq:$2}
 \end{equation}
 endsnippet
 
 snippet template "Basic template" b
-\documentclass[a4paper]{article}
+\documentclass[letter]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -70,18 +94,18 @@ endsnippet
 snippet table "Table environment" b
 \begin{table}[${1:htpb}]
 	\centering
-	\caption{${2:caption}}
-	\label{tab:${3:label}}
 	\begin{tabular}{${5:c}}
 	$0${5/((?<=.)c|l|r)|./(?1: & )/g}
 	\end{tabular}
+	\caption{${2:caption}}
+	\label{tab:${3:label}}
 \end{table}
 endsnippet
 
 snippet fig "Figure environment" b
 \begin{figure}[${1:htpb}]
 	\centering
-	${2:\includegraphics[width=0.8\textwidth]{$3}}
+	${2:\includegraphics[width=0.8\textwidth]{image/$3}}
 	\caption{${4:$3}}
 	\label{fig:${5:${3/\W+/-/g}}}
 \end{figure}
@@ -99,3 +123,39 @@ snippet item "Itemize" bA
 \end{itemize}
 endsnippet
 
+
+snippet msup "Math superscript" iA
+$${1}^{(${2})}$
+endsnippet
+
+snippet ^{( "Math superscript in math" iA
+^{(${1})}
+endsnippet
+
+snippet ebb "Equation box bold" bA 
+\begin{equation} 
+	\boxed{ 
+	\textbf{${1:title}}\hspace{10pt} ${2:equation} 
+}
+	\label{eq:${3:labe}}
+\end{equation}$0
+
+endsnippet
+
+
+snippet bmatrix "Vertical vector" i
+
+f^{(i)} = \begin{bmatrix}
+    f_0^{(i)}   \\\
+    f_1^{(i)}   \\\
+    f_2^{(i)}   \\\
+    \vdots      \\\
+    f_i^{(i)}   \\\
+    \vdots      \\\
+    f_m^{(i)}
+            \end{bmatrix}
+endsnippet
+
+snippet sum  "Summation" i
+\sum_{$1i=0}^{$2m}
+endsnippet
