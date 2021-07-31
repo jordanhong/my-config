@@ -2,9 +2,9 @@
 """"""""""""""
 "  Global Vim "
 """"""""""""""
-
 set nocompatible              " be iMproved, required
 filetype plugin on            " load plugin according to filetype
+let workmode=0                " work mode boolean
 
 """"""""""""""
 "  Plugins "
@@ -18,16 +18,14 @@ endif
 
 "" Install Plugins 
 call plug#begin('~/.vim/plugged')
-
+""" Non work plugins (vim-latex, ultisnips, gruvbox)
+if !workmode                    
+    Plug 'vim-latex/vim-latex'
+    Plug 'SirVer/ultisnips'
+    Plug 'jordanhong/gruvbox-material'
+endif
 """ NerdTree file manager
 Plug 'preservim/nerdtree'
-""" Vim-latex
-Plug 'vim-latex/vim-latex'
-""" UltiSnip Engine
-Plug 'SirVer/ultisnips'
-""" Gruvbox
-Plug 'jordanhong/gruvbox-material'
-
 """ Vim Airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -41,8 +39,10 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 """ Vim hard time (prevents using repeated hjkl)
 Plug 'takac/vim-hardtime'
-
+""" Tagbar class outline viewer
+Plug 'preservim/tagbar'
 call plug#end()
+
 
 
 
@@ -50,6 +50,7 @@ call plug#end()
 
 """ NerdTree
 nmap <c-f> :NERDTreeToggle<CR>
+nmap <c-s> :NERDTreeToggle %<CR>
 
 """ Vim-latex
 let g:Tex_CompileRule_pdf = 'pdflatex -synctex=1 --interaction=batchmode $*'
@@ -116,8 +117,8 @@ let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.notexists = 'Ɇ'
 let g:airline_symbols.whitespace = 'Ξ'
 
-""" Fugutive
-set diffopt=vertical
+""" Tagbar
+nmap <c-e> :TagbarToggle<CR>
 """ Vim hardtime
 let g:hardtime_default_on = 0
 let g:hardtime_showmsg = 1
@@ -128,6 +129,13 @@ let g:hardtime_ignore_buffer_patterns = [ "CustomPatt[ae]rn", "NERD.*" ]
 """"""""""""""
 "  General Settings  "
 """""""""""""" 
+" Work environment variable
+if workmode
+    set t_u7=
+    set t_Co=256
+    set encoding=utf-8
+endif
+
 "" Status Bar
 """ Show command
 "Show what command is being typed
@@ -141,7 +149,7 @@ set belloff=all
 set autoindent
 
 """ Syntax Highlight
-:syntax on
+syntax on
 
 """ Configure tab spaces
 set tabstop=4
@@ -158,15 +166,18 @@ set wrap
 """ Update Session
 :nmap <F2> :wa<Bar>exe "mksession! " . v:this_session<CR>
 "" File navigation
-""" Folding 
-" Enable fold by syntax for C
+""" Folding
 autocmd FileType c,cpp  set foldmethod=syntax
 " autocmd FileType tex,python set foldmethod=indent
-"" Save folding state
+autocmd FileType perl,python set foldmethod=indent
+let g:xml_syntax_folding=1
+au FileType xml setlocal foldmethod=syntax
+au FileType tcl setlocal foldmethod=indent
+
+""" Save folding state
 :nmap <F3> :mkview<CR>
 :nmap <F4> :loadview<CR>
 :nmap <F5> zfa(
-"" File navigation
 """ Searching
 " Set highlight search
 set hls
@@ -204,11 +215,17 @@ map <C-\> :bel vert winc ]<CR>
 "So, you can use <c-w>}if you want to quickly check the tag declaration, followed by <c-w>z to close it. But if you want to navigate, then you can simply use <c-w>v to create a split followed by the standard <c-] to navigate in the tags. When you're done with it, you can simply close the window with <c-w>c.
 
 
-
+"" Filetypes
+autocmd BufEnter *.v.terp if &filetype == "" | setlocal ft=verilog | endif
+autocmd BufEnter *.sv.terp if &filetype == "" | setlocal ft=systemverilog | endif
+" autocmd BufEnter *.do if &filetype == "" | setlocal ft=sh | endif  " Modelsim waveform files
+autocmd BufEnter *.do  setlocal ft=sh " Modelsim waveform files
 "" Backup
 " Turn on backup to store in file.ext.bak
 set backup
 set backupext=.bak
+" Store backup files in one location
+set backupdir=~/.vim/backups
 
 "" Ctags shortcuts
 command! Maketag !ctags -R --exclude='*.bak' .
@@ -222,10 +239,16 @@ set iskeyword+=\-   "sets to recognize dashes
 autocmd CompleteDone * pclose
 "" Manpage
 runtime ftplugin/man.vim
-"" K at cursor opens manpage
+""" K at cursor opens manpage
 set keywordprg=:Man     
 "" Vertical split mode
 let g:ft_man_open_mode = 'vert' 
+"" Vimdiff
+set diffopt=vertical
+" Remove syntax highlighting during diff
+if &diff
+    syntax off
+endif
 """"""""""""""""""""""""
 "  Vimrc Organization  "
 """"""""""""""""""""""""
