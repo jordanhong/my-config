@@ -27,8 +27,6 @@ Plug 'vim-latex/vim-latex'
 Plug 'SirVer/ultisnips'
 """ Gruvbox
 Plug 'jordanhong/gruvbox-material'
-""" Ctrl-p (fuzzy search, uninstalled by default)
-" Plug 'ctrlpvim/ctrlp.vim'
 
 """ Vim Airline
 Plug 'vim-airline/vim-airline'
@@ -38,6 +36,9 @@ Plug 'tpope/vim-fugitive'
 
 """ Commentary
 Plug 'tpope/vim-commentary'
+
+""" Surround
+Plug 'tpope/vim-surround'
 """ Vim hard time (prevents using repeated hjkl)
 Plug 'takac/vim-hardtime'
 
@@ -72,17 +73,23 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical" "Split ultisnipedit veritcally
 
 """ Gruvbox material
-colorscheme gruvbox-material
 if exists('+termguicolors')
     set termguicolors
 endif
 let g:gruvbox_material_enable_bold = 1
+let g:gruvbox_material_enable_italic = 1
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
+set t_Co=256
+set t_ut=""
+
 if has('mac')
     set background=light
-    let g:gruvbox_material_disable_italic_comment = 1
+    " set background=dark
 else
     set background=dark
 endif
+colorscheme gruvbox-material
 """ Vim Airline
 :let g:airline_theme='gruvbox_material'
 if !exists('g:airline_symbols')
@@ -109,12 +116,10 @@ let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.notexists = 'Ɇ'
 let g:airline_symbols.whitespace = 'Ξ'
 
-""" Ctrl-P
-let g:ctrlp_arg_map = 1
 """ Fugutive
 set diffopt=vertical
 """ Vim hardtime
-let g:hardtime_default_on = 1
+let g:hardtime_default_on = 0
 let g:hardtime_showmsg = 1
 let g:hardtime_allow_different_key = 1
 let g:hardtime_ignore_quickfix = 1
@@ -133,7 +138,6 @@ set belloff=all
 "" Syntax
 """ Indentation
 "Set smart indent
-set smartindent
 set autoindent
 
 """ Syntax Highlight
@@ -157,7 +161,7 @@ set wrap
 """ Folding 
 " Enable fold by syntax for C
 autocmd FileType c,cpp  set foldmethod=syntax
-autocmd FileType python set foldmethod=indent
+" autocmd FileType tex,python set foldmethod=indent
 "" Save folding state
 :nmap <F3> :mkview<CR>
 :nmap <F4> :loadview<CR>
