@@ -22,7 +22,7 @@ call plug#begin('~/.vim/plugged')
 if !workmode                    
     Plug 'vim-latex/vim-latex'
     Plug 'SirVer/ultisnips'
-    Plug 'jordanhong/gruvbox-material'
+    Plug 'sainnhe/gruvbox-material'
 endif
 """ NerdTree file manager
 Plug 'preservim/nerdtree'
@@ -37,11 +37,20 @@ Plug 'tpope/vim-commentary'
 
 """ Surround
 Plug 'tpope/vim-surround'
+""" Repeat
+Plug 'tpope/vim-repeat'
 """ Vim hard time (prevents using repeated hjkl)
 Plug 'takac/vim-hardtime'
 """ Tagbar class outline viewer
 Plug 'preservim/tagbar'
+""" Table mode 
+Plug 'dhruvasagar/vim-table-mode'
+
+""" Markdown folding
+Plug 'mikeboiko/vim-markdown-folding'
+
 call plug#end()
+
 
 
 
@@ -62,7 +71,7 @@ else
 endif
 let g:tex_flavor = 'latex' 
 let g:Tex_Menus = 1
-let g:Tex_SmartKeyQuote=0
+let mapleader = ";"
 
 """ Ulti-snips
 " Trigger configuration. 
@@ -79,20 +88,24 @@ if exists('+termguicolors')
 endif
 let g:gruvbox_material_enable_bold = 1
 let g:gruvbox_material_enable_italic = 1
+let g:gruvbox_number_column='bg1'
+" let g:gruvbox_material_ui_contrast='high'
+" let g:gruvbox_material_spell_foreground = 'colored'
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 set t_Co=256
 set t_ut=""
 
 if has('mac')
-    set background=light
-    " set background=dark
+    " set background=light
+    set background=dark
 else
     set background=dark
 endif
 colorscheme gruvbox-material
 """ Vim Airline
-:let g:airline_theme='gruvbox_material'
+let g:airline_section_x = '%{&filetype}'
+let g:airline_theme='gruvbox_material'
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
@@ -126,6 +139,20 @@ let g:hardtime_allow_different_key = 1
 let g:hardtime_ignore_quickfix = 1
 let g:hardtime_ignore_buffer_patterns = [ "CustomPatt[ae]rn", "NERD.*" ]
 "Plug 'vhda/verilog_systemverilog.vim'
+""" Table mode
+function! s:isAtStartOfLine(mapping)
+  let text_before_cursor = getline('.')[0 : col('.')-1]
+  let mapping_pattern = '\V' . escape(a:mapping, '\')
+  let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
+  return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
+endfunction
+
+inoreabbrev <expr> <bar><bar>
+          \ <SID>isAtStartOfLine('\|\|') ?
+          \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
+inoreabbrev <expr> __
+          \ <SID>isAtStartOfLine('__') ?
+          \ '<c-o>:silent! TableModeDisable<cr>' : '__'
 """"""""""""""
 "  General Settings  "
 """""""""""""" 
@@ -152,15 +179,19 @@ set autoindent
 syntax on
 
 """ Configure tab spaces
-set tabstop=4
+set softtabstop=4
+set tabstop=8
 set shiftwidth=4
 set expandtab
 
 """ Writing
 " Enable latex and markdown files
 autocmd FileType tex,markdown,text set spell 
-" Set word wrapping (not working yet): prevent words from splitting off a line
+hi clear SpellBad
+hi SpellBad cterm=underline
 set wrap
+" Prevents words from splitting
+set linebreak
 
 "" Sessions
 """ Update Session
@@ -220,6 +251,7 @@ autocmd BufEnter *.v.terp if &filetype == "" | setlocal ft=verilog | endif
 autocmd BufEnter *.sv.terp if &filetype == "" | setlocal ft=systemverilog | endif
 " autocmd BufEnter *.do if &filetype == "" | setlocal ft=sh | endif  " Modelsim waveform files
 autocmd BufEnter *.do  setlocal ft=sh " Modelsim waveform files
+autocmd BufEnter *.m  setlocal ft=matlab 
 "" Backup
 " Turn on backup to store in file.ext.bak
 set backup
@@ -249,6 +281,8 @@ set diffopt=vertical
 if &diff
     syntax off
 endif
+"" Grep 
+command! -nargs=+ Grep execute 'silent grep -rIn . -e <args>' | copen | execute 'silent /<args>'
 """"""""""""""""""""""""
 "  Vimrc Organization  "
 """"""""""""""""""""""""
